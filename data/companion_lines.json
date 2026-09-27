@@ -84,8 +84,41 @@
      "node": "46344649-af05-5bd2-4819-6c9638634969",
      "companion": "KARLACH",
      "slot": 2
+    },
+    {
+     "node": "e7190486-fa7b-2ecb-8284-eda8b821a784",
+     "companion": "WYLL",
+     "slot": 3
     }
-   ]
+   ],
+   "new_speakers": {
+    "WYLL": {
+     "index": 3,
+     "character": "c774d764-4a17-48dc-b470-32ace9ce447d"
+    }
+   }
+  },
+  {
+   "pak": "Gustav.pak",
+   "dialog": "Mods/Gustav/Story/DialogsBinary/Act1/DEN/DEN_Thieflings_Trainer.lsf",
+   "nodes": [
+    {
+     "node": "38f58645-07fe-14ff-2fab-bc44a5dee131",
+     "companion": "LAEZEL",
+     "slot": 6
+    },
+    {
+     "node": "ae551378-68f4-c26e-fdb3-874ac50b06c5",
+     "companion": "LAEZEL",
+     "slot": 6
+    }
+   ],
+   "new_speakers": {
+    "LAEZEL": {
+     "index": 6,
+     "character": "58a69333-40bf-8358-1d17-fff240d7fb12"
+    }
+   }
   },
   {
    "pak": "Gustav.pak",

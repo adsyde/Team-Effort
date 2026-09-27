@@ -30,6 +30,9 @@ OUT = ROOT / "data/companion_lines.json"
 PAK_PRIORITY = ["Patch8_HotFix9", "GustavX", "Gustav", "Shared"]
 CHOICES = ("TagQuestion", "ActiveRoll")
 THOUGHT = re.compile(r"^\s*<i>.*</i>\s*$", re.S)
+# Этап 3б (прототип): диалоги, где спутника нет среди говорящих — добавляем ему слот и место в сцене.
+# Пока только эти; остальные — после проверки в игре (docs/ROADMAP.md).
+NEW_SLOT_DIALOGS = {"DEN_Stargazing", "DEN_Thieflings_Trainer"}
 
 
 def binary_path(key):
@@ -107,7 +110,8 @@ def main():
             for g in (lst or "").split(";"):
                 if g in D.COMPANIONS:
                     slot_of.setdefault(D.COMPANIONS[g], i)
-        nodes = []
+        nodes, new_speakers = [], {}
+        allow_new = Path(inner).stem in NEW_SLOT_DIALOGS
         for u, n in N.items():
             if n["c"] not in CHOICES or n["sp"] != 1:
                 continue
@@ -116,7 +120,7 @@ def main():
             if not comp:
                 continue
             comp = comp[0]
-            if comp not in slot_of:
+            if comp not in slot_of and not allow_new:
                 skipped["спутника нет среди говорящих"] += 1
                 continue
             texts = [loca.get(h, "") for h in n["texts"] if h]
@@ -127,10 +131,19 @@ def main():
             if dirty:
                 skipped[dirty] += 1
                 continue
+            if comp not in slot_of:     # этап 3б: новый слот в конце списка говорящих
+                slot_of[comp] = max(d["slots"]) + 1 + len(new_speakers)
+                new_speakers[comp] = {"index": slot_of[comp],
+                                      "character": next(g for g, c in D.COMPANIONS.items() if c == comp)}
             nodes.append({"node": u, "companion": comp, "slot": slot_of[comp], "_sets": sets})
         nodes = drop_dead_ends(N, nodes, really, skipped)
+        used = {x["companion"] for x in nodes}
+        new_speakers = {c: v for c, v in new_speakers.items() if c in used}
         if nodes:
-            picked.append({"pak": f"{pak}.pak", "dialog": inner, "nodes": nodes})
+            entry = {"pak": f"{pak}.pak", "dialog": inner, "nodes": nodes}
+            if new_speakers:
+                entry["new_speakers"] = new_speakers
+            picked.append(entry)
 
     total = collections.Counter(n["companion"] for p in picked for n in p["nodes"])
     OUT.parent.mkdir(parents=True, exist_ok=True)

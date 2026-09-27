@@ -8,6 +8,11 @@
   - плюс «у слота 1 нет REALLY_<ИМЯ>», чтобы у героя-происхождения вариант не двоился.
 Дети и тексты те же. Варианты игрока в игре не озвучены, фаз в таймлайне у них нет — таймлайн не трогаем.
 
+Этап 3б: если спутника нет среди говорящих (entry["new_speakers"]), добавляем ему слот в диалог и
+актёра в таймлайн сцены: номер говорящего (TimelineSpeakers) и запись актёра (TimelineActorData) —
+копия записи другого спутника с новым номером, на свободном месте спутника в сцене (SceneActorType 4
+в <имя>_Scene.lsx). Фаз для него нет: варианты игрока в таймлайне не играются.
+
 Что копировать — data/companion_lines.json (scripts/research/select_lines.py). Диалоги берутся из
 паков игры (кэш build/cache/<пак>), результат — mod/Mods/_MOD_/Story/DialogsBinary/Overrides/<путь>.lsf.lsx
 (контент игры, в git не входит). В игре подменяет Lua: Ext.IO.AddPathOverride.
@@ -29,6 +34,8 @@ NS = uuid.UUID("c226c99d-720c-4611-98c9-9ba1fe6df481")    # UUID мода: ко�
 DATA = ROOT / "data/companion_lines.json"
 CACHE = ROOT / "build/cache"
 OVERRIDES = ROOT / "mod/Mods/_MOD_/Story/DialogsBinary/Overrides"
+TL_OVERRIDES = ROOT / "mod/Public/_MOD_/Timeline/Overrides"
+COMPANION_SCENE_ACTOR = "4"   # тип места в сцене для спутников
 MANIFEST = ROOT / "mod/Mods/_MOD_/ScriptExtender/Lua/Shared/Overrides.lua"
 
 
@@ -106,6 +113,82 @@ def patch(tree, wanted, tag_of):
     return added
 
 
+def add_speakers(tree, dialog_name, new_speakers):
+    """Новые слоты в speakerlist диалога. Возвращает {спутник: (индекс, SpeakerMappingId)}."""
+    dialog = tree.getroot().find("region/node")
+    lst = next(kids(dialog, "speakerlist")).find("children")
+    donor = lst.findall("node")[-1]
+    out = {}
+    for comp, sp in sorted(new_speakers.items(), key=lambda x: x[1]["index"]):
+        mapping = str(uuid.uuid5(NS, f"{dialog_name}:{comp}"))
+        s = copy.deepcopy(donor)
+        attr(s, "index").set("value", str(sp["index"]))
+        attr(s, "list").set("value", sp["character"])
+        attr(s, "SpeakerMappingId").set("value", mapping)
+        lst.append(s)
+        out[comp] = (sp["index"], mapping)
+    return out
+
+
+def patch_timeline(tl_tree, scene_lsx, added):
+    """Актёры новых спутников в таймлайне. Возвращает список спутников, которым не нашлось места."""
+    content = tl_tree.getroot().find("region[@id='TimelineContent']/node")
+    speakers = next(kids(content, "TimelineSpeakers")).find("children")
+    actors = next(kids(next(kids(content, "TimelineActorData")), "TimelineActorData")).find("children")
+    scene = ET.parse(scene_lsx).getroot()
+    places = sum(1 for a in scene.iter("node") if a.get("id") == "TLActor"
+                 and (attr(a, "ActorType") is not None and attr(a, "ActorType").get("value") == COMPANION_SCENE_ACTOR))
+    def value(o):
+        return o.find("children/node")
+    comp_actors = [o for o in actors.findall("node") if attr(value(o), "SceneActorType") is not None
+                   and attr(value(o), "SceneActorType").get("value") == COMPANION_SCENE_ACTOR]
+    def scene_index(o):   # 0 по умолчанию в файл не пишется
+        a = attr(value(o), "SceneActorIndex")
+        return int(a.get("value")) if a is not None else 0
+    used = {scene_index(o) for o in comp_actors}
+    failed = []
+    for comp, (index, mapping) in added.items():
+        free = [i for i in range(places) if i not in used]
+        if not comp_actors or not free:
+            failed.append(comp)
+            continue
+        used.add(free[0])
+        sp = ET.SubElement(speakers, "node", {"id": "Object", "key": "MapKey"})
+        ET.SubElement(sp, "attribute", {"id": "MapKey", "type": "int32", "value": str(index)})
+        ET.SubElement(sp, "attribute", {"id": "MapValue", "type": "guid", "value": mapping})
+        a = copy.deepcopy(comp_actors[0])
+        attr(a, "MapKey").set("value", mapping)
+        v = value(a)
+        attr(v, "Speaker").set("value", str(index))
+        if attr(v, "SceneActorIndex") is None:   # атрибуты — перед <children>
+            v.insert(len(v.findall("attribute")),
+                     ET.Element("attribute", {"id": "SceneActorIndex", "type": "int32", "value": "0"}))
+        attr(v, "SceneActorIndex").set("value", str(free[0]))
+        for snap in v.iter("node"):
+            if snap.get("id") == "CompiledNodeSnapshots":
+                cm = snap.find("children/node")
+                if cm is not None and cm.find("children") is not None:
+                    cm.remove(cm.find("children"))
+        actors.append(a)
+    return failed
+
+
+def cached_timeline(pak, inner):
+    """Таймлайн диалога: Mods/<модуль>/Story/DialogsBinary/.../X.lsf → Public/<модуль>/Timeline/Generated/X.lsf."""
+    module = inner.split("/")[1]
+    name = Path(inner).stem
+    rel = f"Public/{module}/Timeline/Generated/{name}"
+    root = CACHE / (Path(pak).stem + "_timelines")
+    lsf = root / f"{rel}.lsf"
+    if not lsf.exists():
+        game = Path(config()["local"]["game_dir"]) / "Data" / pak
+        divine("-a", "extract-package", "-s", game, "-d", root, "-x", f"{rel}*")
+    lsx = lsf.with_name(lsf.name + ".lsx")
+    if not lsx.exists():
+        divine("-a", "convert-resource", "-s", lsf, "-d", lsx)
+    return f"{rel}.lsf", lsx, root / f"{rel}_Scene.lsx"
+
+
 def cached(pak, inner):
     root = CACHE / Path(pak).stem
     if not root.exists():
@@ -120,13 +203,27 @@ def cached(pak, inner):
 
 def main():
     data = json.loads(DATA.read_text(encoding="utf-8"))
-    if OVERRIDES.exists():
-        shutil.rmtree(OVERRIDES)
-    overrides, count = {}, 0
+    for d in (OVERRIDES, TL_OVERRIDES):
+        if d.exists():
+            shutil.rmtree(d)
+    overrides, count, new_slots = {}, 0, 0
     for entry in data["dialogs"]:
         inner = entry["dialog"]
         tree = ET.parse(cached(entry["pak"], inner))
         wanted = {n["node"]: (n["companion"], n["slot"]) for n in entry["nodes"]}
+        if entry.get("new_speakers"):
+            added = add_speakers(tree, Path(inner).stem, entry["new_speakers"])
+            tl_inner, tl_lsx, scene = cached_timeline(entry["pak"], inner)
+            tl_tree = ET.parse(tl_lsx)
+            failed = patch_timeline(tl_tree, scene, added)
+            if failed:
+                raise SystemExit(f"{inner}: нет места в сцене для {failed} — уберите диалог из NEW_SLOT_DIALOGS")
+            tl_rel = tl_inner.split("/Timeline/Generated/", 1)[1]
+            tl_out = TL_OVERRIDES / (tl_rel + ".lsx")
+            tl_out.parent.mkdir(parents=True, exist_ok=True)
+            tl_tree.write(tl_out, encoding="utf-8", xml_declaration=True)
+            overrides[tl_inner] = "Public/_MOD_/Timeline/Overrides/" + tl_rel
+            new_slots += len(added)
         count += len(patch(tree, wanted, data["tags"]))
         rel = inner.split("/Story/DialogsBinary/", 1)[1]
         out = OVERRIDES / (rel + ".lsx")          # X.lsf.lsx → при сборке X.lsf
@@ -139,7 +236,7 @@ def main():
     lines += ["}", ""]
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST.write_text("\n".join(lines), encoding="utf-8", newline="\n")
-    print(f"реплики спутников: {count} копий в {len(overrides)} диалогах")
+    print(f"реплики спутников: {count} копий, новых слотов {new_slots}, подменено файлов {len(overrides)}")
 
 
 if __name__ == "__main__":
