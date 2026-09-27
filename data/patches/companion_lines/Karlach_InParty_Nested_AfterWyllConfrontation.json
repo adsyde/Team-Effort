@@ -1,0 +1,36 @@
+{
+ "format": "dialogkit/1",
+ "id": "team-effort/companion-lines",
+ "mod": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+ "dialog": "Karlach_InParty_Nested_AfterWyllConfrontation",
+ "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+ "ops": [
+  {
+   "op": "add_node",
+   "like": "05ecd70b-a11e-4eb7-ad81-04caac7fafaa",
+   "speaker": 6,
+   "move_slot": [
+    1,
+    6
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "6"
+   },
+   "_companion": "ASTARION",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "ffd08582-7396-4cac-bcd4-8f9cd0fd8ef3",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  }
+ ]
+}

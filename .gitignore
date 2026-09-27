@@ -2,5 +2,11 @@ build/
 dist/
 config/tools.local.json
 __pycache__/
-mod/Mods/_MOD_/Story/DialogsBinary/Overrides/
-mod/Public/_MOD_/Timeline/Overrides/
+# собирает scripts/dialogs.py (DialogKit): контент игры и чужих модов
+mod/Mods/_MOD_/Story/
+mod/Mods/_MOD_/DialogKit/
+mod/Public/_MOD_/DialogKit/
+mod/Public/_MOD_/Timeline/
+mod/Public/_MOD_/Content/
+mod/Mods/_MOD_/ScriptExtender/Lua/Shared/DialogKit.lua
+mod/Mods/_MOD_/ScriptExtender/Lua/Shared/DialogKitManifest.lua
