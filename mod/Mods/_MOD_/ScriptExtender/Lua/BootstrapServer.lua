@@ -15,3 +15,4 @@ end)
 
 Ext.Require("Shared/PathOverrides.lua")
 Ext.Require("Server/SkillAssist.lua")
+Ext.Require("Server/ToolAssist.lua")
