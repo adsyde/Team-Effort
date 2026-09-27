@@ -36,6 +36,9 @@ CACHE = ROOT / "build/cache"
 OVERRIDES = ROOT / "mod/Mods/_MOD_/Story/DialogsBinary/Overrides"
 TL_OVERRIDES = ROOT / "mod/Public/_MOD_/Timeline/Overrides"
 COMPANION_SCENE_ACTOR = "4"   # тип места в сцене для спутников
+# Глобальный флаг мода (mod/Public/_MOD_/Flags): копии видны, только пока он стоит. Ставит Lua по настройке
+# MCM «Реплики спутников», поэтому их можно выключить без перезапуска.
+ENABLED_FLAG = "018440f2-8807-53d4-b844-1cde8a1c4e30"
 MANIFEST = ROOT / "mod/Mods/_MOD_/ScriptExtender/Lua/Shared/Overrides.lua"
 
 
@@ -72,6 +75,14 @@ def retarget(node, slot, tag):
     checks = next(kids(node, "checkflags"))
     tag_group = next(fg for fg in kids(checks, "flaggroup") if attr(fg, "type").get("value") == "Tag")
     tag_group.find("children").append(flag(tag, False, 1))
+    glob = next((fg for fg in kids(checks, "flaggroup") if attr(fg, "type").get("value") == "Global"), None)
+    if glob is None:
+        glob = ET.SubElement(checks.find("children"), "node", {"id": "flaggroup", "key": "type"})
+        ET.SubElement(glob, "attribute", {"id": "type", "type": "FixedString", "value": "Global"})
+        ET.SubElement(glob, "children")
+    f = ET.SubElement(glob.find("children"), "node", {"id": "flag", "key": "UUID"})
+    ET.SubElement(f, "attribute", {"id": "UUID", "type": "FixedString", "value": ENABLED_FLAG})
+    ET.SubElement(f, "attribute", {"id": "value", "type": "bool", "value": "True"})
 
 
 def patch(tree, wanted, tag_of):

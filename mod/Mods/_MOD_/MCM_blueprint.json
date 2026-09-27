@@ -1,0 +1,91 @@
+{
+    "SchemaVersion": 11,
+    "ModName": "Team Effort",
+    "Handles": {
+        "NameHandle": "hc10aef2fgebd1g46b1g97cbgaf607c42e65b",
+        "DescriptionHandle": "h08f3d0b3gc4d6g422cg99aeg0c6d5ad0ae0a"
+    },
+    "ModUUID": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "Tabs": [
+        {
+            "TabName": "General",
+            "Handles": {
+                "NameHandle": "h5ed569c1g7a8eg4856g9d3eg3a95d63dde28"
+            },
+            "TabId": "general",
+            "Sections": [
+                {
+                    "SectionId": "checks",
+                    "SectionName": "Party help with checks",
+                    "Handles": {
+                        "NameHandle": "h2cb9ea85gc333g4877g9873gf90a3b2c54c7"
+                    },
+                    "Settings": [
+                        {
+                            "Id": "dialogue_assist",
+                            "Name": "In conversations",
+                            "Description": "At the start of a conversation each speaker gets a bonus to skills up to the level of the best party member. The bonus is removed when the conversation ends.",
+                            "Handles": {
+                                "NameHandle": "hc042670cgb6b0g458dga848g77913a032254",
+                                "DescriptionHandle": "hfb84476fga00cg45ddg9c04g28bbdbf7cd84"
+                            },
+                            "Type": "checkbox",
+                            "Default": true
+                        },
+                        {
+                            "Id": "tool_assist",
+                            "Name": "Locks and traps",
+                            "Description": "Picking a lock or disarming a trap gets a Sleight of Hand bonus up to the level of the best party member.",
+                            "Handles": {
+                                "NameHandle": "h8f45ab24g2b67g4a5cgaee5g1f5a9634c22c",
+                                "DescriptionHandle": "h74feb4a7g9024g4b7dg9c06g3a653a7e891d"
+                            },
+                            "Type": "checkbox",
+                            "Default": true
+                        }
+                    ]
+                },
+                {
+                    "SectionId": "lines",
+                    "SectionName": "Companion lines",
+                    "Handles": {
+                        "NameHandle": "hc5ea2f6dgd4adg4382ga540g302101adbb18"
+                    },
+                    "Settings": [
+                        {
+                            "Id": "companion_lines",
+                            "Name": "Companion lines in conversations",
+                            "Description": "Unique dialogue options of companions (for example Shadowheart) appear in the main character's conversations, and the companion says them.",
+                            "Handles": {
+                                "NameHandle": "h7ac0659bg473cg49c4g8b21g63a2a3ce6d1a",
+                                "DescriptionHandle": "h2be2431fg4b7ag4208gac6cg2f8f2ba86c30"
+                            },
+                            "Type": "checkbox",
+                            "Default": true
+                        }
+                    ]
+                },
+                {
+                    "SectionId": "debug",
+                    "SectionName": "Debug",
+                    "Handles": {
+                        "NameHandle": "ha75c69e4gaf1cg47a7gac3cg950dab2d6061"
+                    },
+                    "Settings": [
+                        {
+                            "Id": "debug_log",
+                            "Name": "Detailed log",
+                            "Description": "Write skill comparisons to the Script Extender console.",
+                            "Handles": {
+                                "NameHandle": "hc1c71731g52eeg4e75ga7f4gc9ae077b5fd4",
+                                "DescriptionHandle": "hd1b11cf7g6354g407eg8340g923509b10981"
+                            },
+                            "Type": "checkbox",
+                            "Default": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

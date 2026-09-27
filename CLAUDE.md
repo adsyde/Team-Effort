@@ -18,7 +18,9 @@
 - В git не добавлять ничего извлечённого из игры.
 
 ## 4. Сборка и установка
-- `python scripts/build_pak.py` — генерирует статусы и собирает `dist/TeamEffort.pak`.
+- `python scripts/build_pak.py` — генерирует статусы, настройки MCM, тексты и реплики спутников, собирает
+  `dist/TeamEffort.pak`. Мод зависит от MCM (`meta.lsx`). Все тексты мода — таблица `TEXT` в
+  `scripts/gen_stats.py`, ID строк — `data/handles.json` (не менять). В текстах MCM нет `– — … “ ” ‘ ’ №`.
 - `python scripts/install.py` — только при закрытых BG3 и BG3 Mod Manager (Redux); порядок пишется
   в `modsettings.lsx` и в файлы менеджера. Вместе с Best in Party Skills и Use highest modifier
   не включать (бонусы сложатся), `--remove-conflicts` их выключает.

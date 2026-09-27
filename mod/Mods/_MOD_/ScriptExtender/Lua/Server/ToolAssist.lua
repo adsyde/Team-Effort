@@ -19,6 +19,9 @@ end
 
 local function start(char)
     stop(char)
+    if not TE.Setting("tool_assist") then
+        return
+    end
     local bonus, who = TE.BestHelper(char, SKILL)
     if bonus then
         active[char] = status(bonus)
