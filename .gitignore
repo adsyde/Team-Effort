@@ -2,3 +2,4 @@ build/
 dist/
 config/tools.local.json
 __pycache__/
+mod/Mods/_MOD_/Story/DialogsBinary/Overrides/
