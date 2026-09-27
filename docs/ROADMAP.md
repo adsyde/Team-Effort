@@ -21,7 +21,8 @@
 - 1г. Замки и ловушки — **код готов**, ждёт проверки (`Lua/Server/ToolAssist.lua`): взлом и
   обезвреживание — проверка «Ловкости рук» (по описанию инструментов в игре); на `RequestCanLockpick` /
   `RequestCanDisarmTrap` — статус `TE_TOOLASSIST_SleightOfHand_<N>`, игра снимает его сама
-  (`OnLockpickingFinished;OnDisarmingFinished`). Карманы и скрытность — потом.
+  (`OnLockpickingFinished;OnDisarmingFinished`).
+  Скрытность и карманные кражи **не делаем** (решение автора 2026-09-27: у каждого они свои).
 - 1д. Настройки в MCM (вкл/выкл, какие навыки).
 
 ## Этап 2. Прототип реплик спутников — собран, ждёт проверки в игре (`docs/TESTING.md`)
