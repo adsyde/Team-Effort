@@ -24,6 +24,11 @@
 - `python scripts/install.py` — только при закрытых BG3 и BG3 Mod Manager (Redux); порядок пишется
   в `modsettings.lsx` и в файлы менеджера. Вместе с Best in Party Skills и Use highest modifier
   не включать (бонусы сложатся), `--remove-conflicts` их выключает.
+- Правленые диалоги — только через DialogKit (`../DialogKit`, README там): патчи `data/patches/**.json`
+  (`dialogkit/1`), сборка `scripts/dialogs.py`. Патчи только дополняют: новый узел — по образцу рядом
+  с существующим, исходы — те же; ничего не удалять и не переадресовывать. Совместимость с другими
+  модами (SuccubusPlus, If Fate Chose Differently) — правила DialogKit: не затирать чужие правки,
+  каждый мод работает один.
 - Локализация: `Mods/_MOD_/Localization/<Язык>/TeamEffort_*.xml`, без `<!-- -->` (игра падает).
 - UUID мода в `config/tools.json` не менять никогда.
 - Игру запускать через `bg3_dx11.exe`.

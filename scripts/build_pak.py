@@ -4,7 +4,7 @@
 mod/ повторяет раскладку пака; вместо папки модуля в путях пишется «_MOD_» —
 сборщик подставит <name>_<uuid>, чтобы оно было записано ровно в одном месте.
 
-Шаги: scripts/gen_stats.py → копия mod/ в build/pak с подстановкой _MOD_ → проверка локализации
+Шаги: scripts/gen_stats.py и scripts/dialogs.py (DialogKit) → копия mod/ в build/pak с подстановкой _MOD_ → проверка локализации
 (никаких <!-- --> — игра падает при запуске) → meta.lsx из config/tools.json → Divine create-package.
 
   python scripts/build_pak.py
@@ -24,7 +24,8 @@ enable_utf8_stdout()
 
 # Каталоги, файлы в которых игра читает только в бинарном виде (.lsf).
 # Остальные .lsx (meta.lsx, Story/*.txt, Localization/*.xml) кладутся как есть.
-BINARY_DIRS = ("RootTemplates", "Flags", "Tags", "DialogsBinary", "Timeline", "Globals", "Levels", "Content")
+BINARY_DIRS = ("RootTemplates", "Flags", "Tags", "DialogsBinary", "Timeline", "Globals", "Levels", "Content",
+               "DialogKit")
 # Текстовые ресурсы, в которых _MOD_ заменяется на имя папки модуля.
 TEXT_SUFFIXES = (".lsx", ".lsj", ".xml", ".lua")
 
@@ -95,9 +96,9 @@ def main():
     args = ap.parse_args()
 
     if not args.no_generate:
-        import gen_stats, companion_lines
+        import gen_stats, dialogs
         gen_stats.main()
-        companion_lines.main()
+        dialogs.main()
 
     folder = f'{mod["name"]}_{mod["uuid"]}'
     src = resolve(cfg["paths"]["mod_src"])

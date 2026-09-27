@@ -68,3 +68,25 @@ StackId), снимается в конце беседы и при загрузк
 - Ещё три записи типа 4 без `Speaker` — места для остальных членов отряда (`PeanutSlotIdMap` 0–2),
   у них только взгляды и эмоции.
 - Преобразований положения (transform) у говорящих в таймлайне нет — место задаёт сцена.
+
+## Как игра подменяет диалоги и совместимость модов (2026-09-27, DialogKit)
+
+Проверено по пакам игры и `MGNTN_WyllPactPoints.pak` (If Fate Chose Differently, UUID `8007e4f8-…`).
+Подробно — `../DialogKit/README.md`.
+
+- Диалог находится через **банк диалогов**: ресурс `ID` → `SourceFile` (`Mods/<модуль>/Story/Dialogs/…lsj`),
+  игра грузит `Story/DialogsBinary/…lsf`. Мод подменяет диалог ресурсом с тем же `ID` в своём банке;
+  побеждает мод позже в порядке загрузки. If Fate Chose Differently так подменяет 11 диалогов игры
+  (и 12 таймлайнов через `TimelineBank`). Гипотеза «игра сопоставляет по внутреннему UUID файла» не
+  подтвердилась на данных: UUID совпадает, потому что файл — копия; проверит эксперимент D.
+- **Прежний Team Effort (0.1.0 до DialogKit)** подменял путь ванильного файла через `AddPathOverride`,
+  своего банка не было. Для двух диалогов Уилла (`Wyll_InParty2`, `…_Nested_PostJudgement`) игра по
+  банку If Fate Chose Differently грузит его файл — наша подмена там не срабатывала бы вовсе.
+- В ресурсе банка есть `SpeakerSlotsWithLines` — `HasLines` по слотам. У новых слотов этапа 3б в
+  банке игры записи нет: игра могла бы не позвать спутника в беседу. Свой банк это исправляет.
+- If Fate Chose Differently добавляет ответы NPC уже озвученными репликами из других сцен: узел с
+  существующим хэндлом + фаза и `TLVoice` в таймлайне (8 таких реплик Уилла в PostJudgement).
+- Пересечения подмен по банку среди установленных модов: Team Effort — 62, If Fate Chose Differently — 11,
+  A Beautiful Webbing — 1 (`Minthara_InParty_Nested_IPRDs`), Really Shadowheart — 1
+  (`ShadowHeart_InParty2_Nested_ShadowheartHug`). С Team Effort пересекается только If Fate Chose
+  Differently: 2 диалога Уилла.

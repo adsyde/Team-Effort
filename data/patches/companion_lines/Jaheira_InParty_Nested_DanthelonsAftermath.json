@@ -1,0 +1,171 @@
+{
+ "format": "dialogkit/1",
+ "id": "team-effort/companion-lines",
+ "mod": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+ "dialog": "Jaheira_InParty_Nested_DanthelonsAftermath",
+ "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+ "ops": [
+  {
+   "op": "add_node",
+   "like": "1ad1cf35-62d4-482a-8ded-fcc89359a023",
+   "speaker": 4,
+   "move_slot": [
+    1,
+    4
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "4"
+   },
+   "_companion": "SHADOWHEART",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "642d2aee-e3df-47e3-9f47-bbcd441bb9e0",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "5d21e9a6-0390-4f5e-93b6-9175fa3f382a",
+   "speaker": 7,
+   "move_slot": [
+    1,
+    7
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "7"
+   },
+   "_companion": "GALE",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "9b0354c0-56d9-4723-8034-918ac9abab19",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "9ff461b9-124c-4020-b8b5-5322c7095f87",
+   "speaker": 3,
+   "move_slot": [
+    1,
+    3
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "3"
+   },
+   "_companion": "LAEZEL",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "b5682d1d-c395-489c-9675-1f9b0c328ea5",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "cbcc43a1-1715-442f-a6a6-9682e337e48f",
+   "speaker": 6,
+   "move_slot": [
+    1,
+    6
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "6"
+   },
+   "_companion": "WYLL",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "5f40def5-d3ec-4698-a367-01a339888956",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "d2dc152a-a093-44fd-96f8-15cc321c7dad",
+   "speaker": 8,
+   "move_slot": [
+    1,
+    8
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "8"
+   },
+   "_companion": "KARLACH",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "1a2f70d6-8ead-4eb5-a824-79ee1971764a",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "dbd751da-0364-46d2-94c2-a219bd235856",
+   "speaker": 5,
+   "move_slot": [
+    1,
+    5
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "5"
+   },
+   "_companion": "ASTARION",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "ffd08582-7396-4cac-bcd4-8f9cd0fd8ef3",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  }
+ ]
+}

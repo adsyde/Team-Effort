@@ -1,0 +1,117 @@
+{
+ "format": "dialogkit/1",
+ "id": "team-effort/companion-lines",
+ "mod": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+ "dialog": "SHA_Raphael",
+ "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+ "ops": [
+  {
+   "op": "add_node",
+   "like": "72848478-2ccf-780a-a6c4-8f5c395b541e",
+   "speaker": 3,
+   "move_slot": [
+    1,
+    3
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "3"
+   },
+   "_companion": "KARLACH",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "1a2f70d6-8ead-4eb5-a824-79ee1971764a",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "7ebb08ef-400a-07ca-e132-5153b77eb0f3",
+   "speaker": 2,
+   "move_slot": [
+    1,
+    2
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "2"
+   },
+   "_companion": "ASTARION",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "ffd08582-7396-4cac-bcd4-8f9cd0fd8ef3",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "b3e0311a-60eb-06fd-d17a-cf59d3068263",
+   "speaker": 2,
+   "move_slot": [
+    1,
+    2
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "2"
+   },
+   "_companion": "ASTARION",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "ffd08582-7396-4cac-bcd4-8f9cd0fd8ef3",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "ccc2be27-dc09-655c-b2b1-d92cfa71818c",
+   "speaker": 3,
+   "move_slot": [
+    1,
+    3
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "3"
+   },
+   "_companion": "KARLACH",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "1a2f70d6-8ead-4eb5-a824-79ee1971764a",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  }
+ ]
+}

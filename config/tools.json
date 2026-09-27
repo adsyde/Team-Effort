@@ -17,5 +17,27 @@
     "mod_src": "mod",
     "build": "build",
     "dist": "dist"
+  },
+  "dialogkit": {
+    "_note": "Общий слой правок диалогов (../DialogKit). Партнёры — другие моды на DialogKit: их патчи берутся с диска, чтобы собрать вариант «all». Базы — чужие моды, которые сами подменяют диалоги игры: наши правки собираются и поверх их версии.",
+    "path": "../DialogKit",
+    "cache": "build/dialogkit",
+    "patches": [
+      "data/patches"
+    ],
+    "partners": [
+      {
+        "uuid": "a41f6c2e-9b37-4d58-b0e1-7c3d95f28e64",
+        "name": "SuccubusPlus",
+        "patches": "../SuccubusPlus/dialogkit/patches"
+      }
+    ],
+    "bases": [
+      {
+        "uuid": "8007e4f8-4cf1-4077-9953-3e67e456329c",
+        "name": "If Fate Chose Differently",
+        "source": "MGNTN_WyllPactPoints"
+      }
+    ]
   }
 }

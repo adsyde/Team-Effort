@@ -1,0 +1,36 @@
+{
+ "format": "dialogkit/1",
+ "id": "team-effort/companion-lines",
+ "mod": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+ "dialog": "Karlach_InParty_Nested_RaphaelContract",
+ "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+ "ops": [
+  {
+   "op": "add_node",
+   "like": "3ae553be-3fb6-40bf-b038-192cf18acbbc",
+   "speaker": 2,
+   "move_slot": [
+    1,
+    2
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "2"
+   },
+   "_companion": "WYLL",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "5f40def5-d3ec-4698-a367-01a339888956",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  }
+ ]
+}

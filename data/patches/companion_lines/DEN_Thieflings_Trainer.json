@@ -1,0 +1,71 @@
+{
+ "format": "dialogkit/1",
+ "id": "team-effort/companion-lines",
+ "mod": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+ "dialog": "DEN_Thieflings_Trainer",
+ "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+ "ops": [
+  {
+   "op": "add_speaker",
+   "key": "laezel",
+   "character": "58a69333-40bf-8358-1d17-fff240d7fb12",
+   "index": 6,
+   "mapping": "ea01d0c8-4472-5b75-9623-77ff058849ac",
+   "timeline": "companion"
+  },
+  {
+   "op": "add_node",
+   "like": "38f58645-07fe-14ff-2fab-bc44a5dee131",
+   "speaker": 6,
+   "move_slot": [
+    1,
+    6
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "6"
+   },
+   "_companion": "LAEZEL",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "b5682d1d-c395-489c-9675-1f9b0c328ea5",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "ae551378-68f4-c26e-fdb3-874ac50b06c5",
+   "speaker": 6,
+   "move_slot": [
+    1,
+    6
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "6"
+   },
+   "_companion": "LAEZEL",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "b5682d1d-c395-489c-9675-1f9b0c328ea5",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  }
+ ]
+}

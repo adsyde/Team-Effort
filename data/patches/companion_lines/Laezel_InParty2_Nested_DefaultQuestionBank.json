@@ -1,0 +1,171 @@
+{
+ "format": "dialogkit/1",
+ "id": "team-effort/companion-lines",
+ "mod": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+ "dialog": "Laezel_InParty2_Nested_DefaultQuestionBank",
+ "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+ "ops": [
+  {
+   "op": "add_node",
+   "like": "2a360b09-286d-43d4-b7df-38b3bc8e5a68",
+   "speaker": 5,
+   "move_slot": [
+    1,
+    5
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "5"
+   },
+   "_companion": "GALE",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "9b0354c0-56d9-4723-8034-918ac9abab19",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "32520df0-a625-41fc-88e2-72cc2e255379",
+   "speaker": 5,
+   "move_slot": [
+    1,
+    5
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "5"
+   },
+   "_companion": "GALE",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "9b0354c0-56d9-4723-8034-918ac9abab19",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "57deee73-1a95-4c0a-b513-e7e8717c25b4",
+   "speaker": 5,
+   "move_slot": [
+    1,
+    5
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "5"
+   },
+   "_companion": "GALE",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "9b0354c0-56d9-4723-8034-918ac9abab19",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "a1b54e2e-2c8e-4d54-9b1b-910554027686",
+   "speaker": 2,
+   "move_slot": [
+    1,
+    2
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "2"
+   },
+   "_companion": "SHADOWHEART",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "642d2aee-e3df-47e3-9f47-bbcd441bb9e0",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "c1aa2e3a-db06-447f-b881-81784509fd6a",
+   "speaker": 2,
+   "move_slot": [
+    1,
+    2
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "2"
+   },
+   "_companion": "SHADOWHEART",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "642d2aee-e3df-47e3-9f47-bbcd441bb9e0",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "cf1066a0-0d9e-4481-978a-e74ccfc27e4b",
+   "speaker": 5,
+   "move_slot": [
+    1,
+    5
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "5"
+   },
+   "_companion": "GALE",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "9b0354c0-56d9-4723-8034-918ac9abab19",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  }
+ ]
+}

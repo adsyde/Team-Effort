@@ -1,0 +1,117 @@
+{
+ "format": "dialogkit/1",
+ "id": "team-effort/companion-lines",
+ "mod": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+ "dialog": "WYR_RaphaelTango_Warlock",
+ "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+ "ops": [
+  {
+   "op": "add_node",
+   "like": "1dc6eb6c-5591-c160-074c-a347d0e38088",
+   "speaker": 3,
+   "move_slot": [
+    1,
+    3
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "3"
+   },
+   "_companion": "KARLACH",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "1a2f70d6-8ead-4eb5-a824-79ee1971764a",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "1ea0ec2c-9086-62b2-40cb-30919316a9c2",
+   "speaker": 3,
+   "move_slot": [
+    1,
+    3
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "3"
+   },
+   "_companion": "KARLACH",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "1a2f70d6-8ead-4eb5-a824-79ee1971764a",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "3f9114a5-66b5-6c6d-1d24-162eab9838fa",
+   "speaker": 3,
+   "move_slot": [
+    1,
+    3
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "3"
+   },
+   "_companion": "KARLACH",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "1a2f70d6-8ead-4eb5-a824-79ee1971764a",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "833668cb-1558-0f9d-2dcc-13c308ca12d1",
+   "speaker": 3,
+   "move_slot": [
+    1,
+    3
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "3"
+   },
+   "_companion": "KARLACH",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "1a2f70d6-8ead-4eb5-a824-79ee1971764a",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  }
+ ]
+}

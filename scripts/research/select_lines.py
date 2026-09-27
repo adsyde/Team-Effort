@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Отбор вариантов спутников для этапа 3 → data/companion_lines.json (только идентификаторы).
+"""Отбор вариантов спутников → патчи DialogKit data/patches/companion_lines/<диалог>.json (только id).
 
 Берём вариант героя (TagQuestion или ActiveRoll, speaker = 1) с условием «у слота 1 есть тег
 REALLY_<спутник>», если:
@@ -26,7 +26,9 @@ import dialog_index as D  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = D.ROOT
-OUT = ROOT / "data/companion_lines.json"
+OUT = ROOT / "data/patches/companion_lines"
+MOD = "c226c99d-720c-4611-98c9-9ba1fe6df481"
+ENABLED_FLAG = "018440f2-8807-53d4-b844-1cde8a1c4e30"   # TE_CompanionLines_Enabled (настройка MCM)
 PAK_PRIORITY = ["Patch8_HotFix9", "GustavX", "Gustav", "Shared"]
 CHOICES = ("TagQuestion", "ActiveRoll")
 THOUGHT = re.compile(r"^\s*<i>.*</i>\s*$", re.S)
@@ -146,10 +148,27 @@ def main():
             picked.append(entry)
 
     total = collections.Counter(n["companion"] for p in picked for n in p["nodes"])
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"_note": "Сгенерировано scripts/research/select_lines.py, руками не править.",
-                               "tags": {c: comp_tag[c] for c in sorted(total)},
-                               "dialogs": picked}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    import shutil, uuid
+    if OUT.exists():
+        shutil.rmtree(OUT)
+    OUT.mkdir(parents=True)
+    for e in picked:
+        stem = Path(e["dialog"]).stem
+        ops = []
+        for comp, sp in sorted(e.get("new_speakers", {}).items(), key=lambda x: x[1]["index"]):
+            ops.append({"op": "add_speaker", "key": comp.lower(), "character": sp["character"], "index": sp["index"],
+                        "mapping": str(uuid.uuid5(uuid.UUID(MOD), f"{stem}:{comp}")), "timeline": "companion"})
+        for n in e["nodes"]:
+            ops.append({"op": "add_node", "like": n["node"], "speaker": n["slot"], "move_slot": [1, n["slot"]],
+                        "derive": {"ns": MOD, "tag": str(n["slot"])}, "_companion": n["companion"],
+                        "conditions_add": [
+                            {"type": "Tag", "flag": comp_tag[n["companion"]], "value": False, "slot": 1},
+                            {"type": "Global", "flag": ENABLED_FLAG, "value": True}]})
+        patch = {"format": "dialogkit/1", "id": "team-effort/companion-lines", "mod": MOD, "dialog": stem,
+                 "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. "
+                          "Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+                 "ops": ops}
+        (OUT / f"{stem}.json").write_text(json.dumps(patch, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{sum(total.values())} вариантов в {len(picked)} диалогах:", dict(total.most_common()))
     print("пропущено:", dict(skipped))
 

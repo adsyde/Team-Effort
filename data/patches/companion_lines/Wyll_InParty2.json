@@ -1,0 +1,63 @@
+{
+ "format": "dialogkit/1",
+ "id": "team-effort/companion-lines",
+ "mod": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+ "dialog": "Wyll_InParty2",
+ "_note": "Сгенерировано scripts/research/select_lines.py, руками не править. Вариант героя «только для <спутника>» — копия, которую говорит сам спутник.",
+ "ops": [
+  {
+   "op": "add_node",
+   "like": "ac5cff4a-f7ac-d5cb-3205-fe54cea291a8",
+   "speaker": 6,
+   "move_slot": [
+    1,
+    6
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "6"
+   },
+   "_companion": "GALE",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "9b0354c0-56d9-4723-8034-918ac9abab19",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  },
+  {
+   "op": "add_node",
+   "like": "f421e2a8-7025-cb6a-6f51-a6dab710ebb0",
+   "speaker": 6,
+   "move_slot": [
+    1,
+    6
+   ],
+   "derive": {
+    "ns": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "tag": "6"
+   },
+   "_companion": "GALE",
+   "conditions_add": [
+    {
+     "type": "Tag",
+     "flag": "9b0354c0-56d9-4723-8034-918ac9abab19",
+     "value": false,
+     "slot": 1
+    },
+    {
+     "type": "Global",
+     "flag": "018440f2-8807-53d4-b844-1cde8a1c4e30",
+     "value": true
+    }
+   ]
+  }
+ ]
+}

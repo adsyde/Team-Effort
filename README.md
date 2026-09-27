@@ -13,6 +13,9 @@ Mod Configuration Menu (MCM): в нём каждую часть мода мож�
 
 Не включайте вместе с Best in Party Skills и Use highest modifier: бонусы сложатся.
 
+Совместим с If Fate Chose Differently и SuccubusPlus: общие диалоги собираются со всеми правками
+(общая библиотека DialogKit), чужие правки не затираются.
+
 ## Сборка
 
 ```
