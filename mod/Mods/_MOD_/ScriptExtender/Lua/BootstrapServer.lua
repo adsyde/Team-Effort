@@ -13,4 +13,5 @@ Ext.RegisterConsoleCommand("te_debug", function()
     _P("[TeamEffort] журнал " .. (TE.Debug and "включён" or "выключен"))
 end)
 
+Ext.Require("Shared/PathOverrides.lua")
 Ext.Require("Server/SkillAssist.lua")

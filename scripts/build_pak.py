@@ -26,7 +26,7 @@ enable_utf8_stdout()
 # Остальные .lsx (meta.lsx, Story/*.txt, Localization/*.xml) кладутся как есть.
 BINARY_DIRS = ("RootTemplates", "Flags", "Tags", "DialogsBinary", "Timeline", "Globals", "Levels", "Content")
 # Текстовые ресурсы, в которых _MOD_ заменяется на имя папки модуля.
-TEXT_SUFFIXES = (".lsx", ".lsj", ".xml")
+TEXT_SUFFIXES = (".lsx", ".lsj", ".xml", ".lua")
 
 
 def version64(text):
@@ -84,8 +84,9 @@ def main():
     args = ap.parse_args()
 
     if not args.no_generate:
-        import gen_stats
+        import gen_stats, companion_lines
         gen_stats.main()
+        companion_lines.main()
 
     folder = f'{mod["name"]}_{mod["uuid"]}'
     src = resolve(cfg["paths"]["mod_src"])
