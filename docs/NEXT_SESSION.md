@@ -60,7 +60,7 @@
 ## Инструменты
 
 - DialogKit: `../DialogKit` (README — формат патчей и правила), тесты `python -m pytest tests`,
-  пробные моды — `python probe/build_probe.py` → `dist/`. Локальный git, на GitHub пока нет.
+  пробные моды — `python probe/build_probe.py` → `dist/`. Репозиторий — github.com/adsyde/DialogKit.
 - Диалоги Team Effort: `python scripts/dialogs.py` (вызывается из `build_pak.py`); кэш — `build/dialogkit/`.
 - Данные игры: `../AlfiraCompanion/game-data` (распаковка — `../AlfiraCompanion/scripts/unpack_game.py`),
   loca — `../AlfiraCompanion/game-data/_cache.pkl`.
