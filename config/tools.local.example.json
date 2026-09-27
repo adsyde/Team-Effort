@@ -1,0 +1,10 @@
+{
+  "divine_path": "C:/Tools/LSLib/Tools/Divine.exe",
+  "game_dir": "C:/Program Files (x86)/Steam/steamapps/common/Baldurs Gate 3",
+  "vgmstream_path": "C:/Tools/vgmstream/vgmstream-cli.exe",
+  "wwise_console_path": "",
+  "bg3moddinglib_path": "C:/Tools/Guidance/src",
+  "bg3moddinglib_commit": "2f25d73",
+  "bg3moddinglib_env": "C:/Tools/bg3moddinglib-env",
+  "_bg3moddinglib": "bg3moddinglib (MIT) из https://github.com/0x1amy0urdad/Guidance, коммит 2f25d73: путь к src. Окружение (LSLib 1.20.3, индекс игры) — вне репозитория. pip install numpy requests pythonnet"
+}

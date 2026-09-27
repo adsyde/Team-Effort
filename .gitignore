@@ -1,0 +1,4 @@
+build/
+dist/
+config/tools.local.json
+__pycache__/

@@ -1,0 +1,21 @@
+{
+  "_local_config": "Машинно-зависимые пути задаются в config/tools.local.json (см. tools.local.example.json). Этот файл общий.",
+  "game": "bg3",
+  "game_version": "Patch 8 Hotfix 9",
+  "mod": {
+    "name": "PartyVoices",
+    "display_name": "Party Voices",
+    "description": "Party members speak their own unique lines and lend their skills to dialogue checks.",
+    "uuid": "c226c99d-720c-4611-98c9-9ba1fe6df481",
+    "_uuid_note": "Выдан один раз при создании проекта. Не менять: иначе для игрока это другой мод.",
+    "author": "adsyde",
+    "version": "0.1.0"
+  },
+  "game_data": "../AlfiraCompanion/game-data",
+  "_game_data_note": "Распакованные данные игры берём из проекта Альфиры (там же scripts/unpack_game.py), чтобы не держать вторую копию на 2 ГБ.",
+  "paths": {
+    "mod_src": "mod",
+    "build": "build",
+    "dist": "dist"
+  }
+}
