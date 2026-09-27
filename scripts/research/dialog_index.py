@@ -66,7 +66,7 @@ def parse(path):
                             texts.append(x["TagText"].get("handle"))
             nodes[uid] = dict(c=v(n, "constructor"), sp=v(n, "speaker"), kids=kids, texts=texts,
                               check=flags(n, "checkflags"), set=flags(n, "setflags"),
-                              skill=v(n, "Skill"), roots=None)
+                              skill=v(n, "Skill"), jump=v(n, "jumptarget"), source=v(n, "SourceNode"))
     roots = [v(r, "RootNodes") for rn in dlg.get("nodes") or [] for r in rn.get("RootNodes") or []]
     return dict(slots=slots, nodes=nodes, roots=roots)
 
