@@ -57,6 +57,25 @@ def stats():
                 f'data "Boosts" "Skill({skill}, {n})"',
                 "",
             ]
+    # Замки и ловушки (Lua/Server/ToolAssist.lua): игра снимает статус сама по окончании взлома.
+    out += [
+        'new entry "TE_TOOLASSIST_BASE"',
+        'type "StatusData"',
+        'data "StatusType" "BOOST"',
+        'using "TE_SKILLASSIST_BASE"',
+        'data "RemoveEvents" "OnLockpickingFinished;OnDisarmingFinished"',
+        "",
+    ]
+    for n in range(1, MAX_BONUS + 1):
+        out += [
+            f'new entry "TE_TOOLASSIST_SleightOfHand_{n}"',
+            'type "StatusData"',
+            'data "StatusType" "BOOST"',
+            'using "TE_TOOLASSIST_BASE"',
+            'data "StackId" "TE_TOOLASSIST_SleightOfHand"',
+            f'data "Boosts" "Skill(SleightOfHand, {n})"',
+            "",
+        ]
     return "\n".join(out)
 
 

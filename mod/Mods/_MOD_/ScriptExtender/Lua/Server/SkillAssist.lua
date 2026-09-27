@@ -53,24 +53,36 @@ local function clear(char, statuses)
     end
 end
 
+-- Лучший в отряде по навыку, если он лучше самого персонажа: (разница, помощник) или nil.
+local function best(char, skill, helpers)
+    local own = skillValue(char, skill)
+    local top, who = own, nil
+    for _, m in ipairs(helpers or helpersOf(char)) do
+        local v = skillValue(m, skill)
+        if v > top then
+            top, who = v, m
+        end
+    end
+    if who then
+        TE.Log("%s, %s: %d (HasSkill %s); лучший %s: %d", name(char), skill, own,
+            tostring(Osi.HasSkill(char, skill)), name(who), top)
+        return math.min(top - own, MAX_BONUS), who
+    end
+end
+
+TE.BestHelper = best
+TE.ClearStatuses = clear
+TE.MaxBonus = MAX_BONUS
+
 local function assist(char)
     local helpers = helpersOf(char)
     local applied = {}
     for _, skill in ipairs(SKILLS) do
-        local own = skillValue(char, skill)
-        local best, who = own, nil
-        for _, m in ipairs(helpers) do
-            local v = skillValue(m, skill)
-            if v > best then
-                best, who = v, m
-            end
-        end
-        if who then
-            local s = status(skill, math.min(best - own, MAX_BONUS))
+        local bonus, who = best(char, skill, helpers)
+        if bonus then
+            local s = status(skill, bonus)
             Osi.ApplyStatus(char, s, -1, 1, who)
             applied[#applied + 1] = s
-            TE.Log("%s, %s: %d (HasSkill %s); лучший %s: %d → %s", name(char), skill, own,
-                tostring(Osi.HasSkill(char, skill)), name(who), best, s)
         end
     end
     return applied
