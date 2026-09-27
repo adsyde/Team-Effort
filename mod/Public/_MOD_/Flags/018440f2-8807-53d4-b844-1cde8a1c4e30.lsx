@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="4" minor="0" revision="0" build="16" />
+	<region id="Flags">
+		<node id="Flags">
+			<attribute id="Description" type="LSString" value="Team Effort: companion lines in the main character's conversations are enabled (MCM)" />
+			<attribute id="Name" type="FixedString" value="TE_CompanionLines_Enabled" />
+			<attribute id="UUID" type="guid" value="018440f2-8807-53d4-b844-1cde8a1c4e30" />
+			<attribute id="Usage" type="uint8" value="5" />
+		</node>
+	</region>
+</save>

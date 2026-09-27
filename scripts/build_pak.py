@@ -42,7 +42,18 @@ def meta_lsx(mod, folder, version):
         <node id="root">
             <children>
                 <node id="Conflicts"/>
-                <node id="Dependencies"/>
+                <node id="Dependencies">
+                    <children>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" type="LSString" value="BG3MCM"/>
+                            <attribute id="MD5" type="LSString" value=""/>
+                            <attribute id="Name" type="LSString" value="Mod Configuration Menu"/>
+                            <attribute id="PublishHandle" type="uint64" value="0"/>
+                            <attribute id="UUID" type="FixedString" value="755a8a72-407f-4f0d-9a33-274ac0f0b53d"/>
+                            <attribute id="Version64" type="int64" value="41799034041532416"/>
+                        </node>
+                    </children>
+                </node>
                 <node id="ModuleInfo">
                     <attribute id="Author" type="LSString" value="{mod["author"]}"/>
                     <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>

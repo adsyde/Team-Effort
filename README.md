@@ -1,6 +1,7 @@
 # Team Effort («Общими силами»)
 
-Мод для Baldur's Gate 3 (Patch 8 Hotfix 9). Нужен [Script Extender](https://github.com/Norbyte/bg3se).
+Мод для Baldur's Gate 3 (Patch 8 Hotfix 9). Нужны [Script Extender](https://github.com/Norbyte/bg3se) и
+Mod Configuration Menu (MCM): в нём каждую часть мода можно выключить.
 
 Весь отряд участвует в деле, а не только тот, кто ведёт беседу.
 
@@ -24,4 +25,5 @@ python scripts/install.py      # в игру; BG3 и BG3 Mod Manager закры�
 ---
 
 *Team Effort* — BG3 mod: party members lend their skills to checks and speak their own unique
-dialogue lines (unvoiced, like all player lines) in the main character's conversations. Requires Script Extender.
+dialogue lines (unvoiced, like all player lines) in the main character's conversations. Requires Script Extender
+and Mod Configuration Menu.

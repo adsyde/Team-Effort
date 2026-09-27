@@ -2,7 +2,7 @@ TE = TE or {}
 TE.Debug = false
 
 function TE.Log(fmt, ...)
-    if TE.Debug then
+    if TE.Debug or (TE.Setting and TE.Setting("debug_log")) then
         _P("[TeamEffort] " .. string.format(fmt, ...))
     end
 end
@@ -14,5 +14,6 @@ Ext.RegisterConsoleCommand("te_debug", function()
 end)
 
 Ext.Require("Shared/PathOverrides.lua")
+Ext.Require("Server/Settings.lua")
 Ext.Require("Server/SkillAssist.lua")
 Ext.Require("Server/ToolAssist.lua")

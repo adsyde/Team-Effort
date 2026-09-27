@@ -90,6 +90,10 @@ end
 
 Ext.Osiris.RegisterListener("DialogStarted", 2, "after", function(_, inst)
     local players = {}
+    if not TE.Setting("dialogue_assist") then
+        byInstance[inst] = players
+        return
+    end
     for i = 1, Osi.DialogGetNumberOfInvolvedPlayers(inst) or 0 do
         local char = Osi.DialogGetInvolvedPlayer(inst, i)
         if char and Osi.IsCharacter(char) == 1 and not players[uuid(char)] then
