@@ -4,6 +4,7 @@ TE.DialogOverrides = {
     ["Mods/Gustav/Story/DialogsBinary/Act1/DEN/DEN_AttackOnDen_GrieflingFriend.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Act1/DEN/DEN_AttackOnDen_GrieflingFriend.lsf",
     ["Mods/Gustav/Story/DialogsBinary/Act1/DEN/DEN_HagTrader.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Act1/DEN/DEN_HagTrader.lsf",
     ["Mods/Gustav/Story/DialogsBinary/Act1/DEN/DEN_Stargazing.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Act1/DEN/DEN_Stargazing.lsf",
+    ["Mods/Gustav/Story/DialogsBinary/Act1/DEN/DEN_Thieflings_Trainer.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Act1/DEN/DEN_Thieflings_Trainer.lsf",
     ["Mods/Gustav/Story/DialogsBinary/Act1/Goblin/GOB_GoblinPriest_Branding.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Act1/Goblin/GOB_GoblinPriest_Branding.lsf",
     ["Mods/Gustav/Story/DialogsBinary/Act1/Goblin/GOB_PainPriest.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Act1/Goblin/GOB_PainPriest.lsf",
     ["Mods/Gustav/Story/DialogsBinary/Act1/Goblin/GOB_WolfPens_HalsinsBear_AfterCombat.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Act1/Goblin/GOB_WolfPens_HalsinsBear_AfterCombat.lsf",
@@ -61,4 +62,6 @@ TE.DialogOverrides = {
     ["Mods/GustavDev/Story/DialogsBinary/Companions/Shadowheart_InParty_Nested_TopicalGreetings.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Companions/Shadowheart_InParty_Nested_TopicalGreetings.lsf",
     ["Mods/GustavDev/Story/DialogsBinary/Companions/Wyll_InParty2.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Companions/Wyll_InParty2.lsf",
     ["Mods/GustavDev/Story/DialogsBinary/Companions/Wyll_InParty2_Nested_PostJudgement.lsf"] = "Mods/_MOD_/Story/DialogsBinary/Overrides/Companions/Wyll_InParty2_Nested_PostJudgement.lsf",
+    ["Public/Gustav/Timeline/Generated/DEN_Stargazing.lsf"] = "Public/_MOD_/Timeline/Overrides/DEN_Stargazing.lsf",
+    ["Public/Gustav/Timeline/Generated/DEN_Thieflings_Trainer.lsf"] = "Public/_MOD_/Timeline/Overrides/DEN_Thieflings_Trainer.lsf",
 }
