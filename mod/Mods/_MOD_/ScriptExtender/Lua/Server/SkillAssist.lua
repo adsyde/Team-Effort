@@ -1,7 +1,7 @@
 -- Проверки навыков в беседе: каждый игрок беседы получает бонус до уровня лучшего в отряде.
 --
 -- В диалоге бросает говорящий (узел ActiveRoll, поле speaker), заменить бросающего нельзя.
--- Поэтому передаём не бросок, а число: статус PV_SKILLASSIST_<Навык>_<N> с Boosts Skill(<Навык>, N),
+-- Поэтому передаём не бросок, а число: статус TE_SKILLASSIST_<Навык>_<N> с Boosts Skill(<Навык>, N),
 -- где N — разница между лучшим в отряде и говорящим. Статусы генерирует scripts/gen_stats.py.
 -- Статус бессрочный и снимается в конце беседы, а при загрузке уровня — подчищается на всякий случай.
 
@@ -26,12 +26,12 @@ local function name(char)
 end
 
 local function status(skill, bonus)
-    return string.format("PV_SKILLASSIST_%s_%d", skill, bonus)
+    return string.format("TE_SKILLASSIST_%s_%d", skill, bonus)
 end
 
 -- Сравниваем пассивные значения навыков, как Best in Party Skills: в них уже учтены
 -- характеристика, мастерство, компетентность и бонусы вещей. Что именно даёт движок
--- (и есть ли там +5 за преимущество) — проверяем в игре командой pv_debug.
+-- (и есть ли там +5 за преимущество) — проверяем в игре командой te_debug.
 local function skillValue(char, skill)
     return Osi.CalculatePassiveSkill(char, skill) or 0
 end
@@ -69,7 +69,7 @@ local function assist(char)
             local s = status(skill, math.min(best - own, MAX_BONUS))
             Osi.ApplyStatus(char, s, -1, 1, who)
             applied[#applied + 1] = s
-            PV.Log("%s, %s: %d (HasSkill %s); лучший %s: %d → %s", name(char), skill, own,
+            TE.Log("%s, %s: %d (HasSkill %s); лучший %s: %d → %s", name(char), skill, own,
                 tostring(Osi.HasSkill(char, skill)), name(who), best, s)
         end
     end

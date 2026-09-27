@@ -3,9 +3,9 @@
   "game": "bg3",
   "game_version": "Patch 8 Hotfix 9",
   "mod": {
-    "name": "PartyVoices",
-    "display_name": "Party Voices",
-    "description": "Party members speak their own unique lines and lend their skills to dialogue checks.",
+    "name": "TeamEffort",
+    "display_name": "Team Effort",
+    "description": "The whole party pitches in: companions speak their own unique lines and lend their skills to checks in dialogue and in the world.",
     "uuid": "c226c99d-720c-4611-98c9-9ba1fe6df481",
     "_uuid_note": "Выдан один раз при создании проекта. Не менять: иначе для игрока это другой мод.",
     "author": "adsyde",

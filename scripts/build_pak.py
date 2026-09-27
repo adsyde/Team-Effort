@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Собирает мод из mod/ в dist/PartyVoices.pak (основа — сборщик AlfiraSecondVerse).
+"""Собирает мод из mod/ в dist/TeamEffort.pak (основа — сборщик AlfiraSecondVerse).
 
 mod/ повторяет раскладку пака; вместо папки модуля в путях пишется «_MOD_» —
 сборщик подставит <name>_<uuid>, чтобы оно было записано ровно в одном месте.
@@ -143,7 +143,7 @@ def main():
     # тогда пакуем из временной копии.
     staged = build
     if any(part.startswith(".") for part in build.parts):
-        staged = Path(tempfile.mkdtemp(prefix="pv_pak_")) / "pak"
+        staged = Path(tempfile.mkdtemp(prefix="te_pak_")) / "pak"
         shutil.copytree(build, staged)
     divine("-a", "create-package", "-s", staged, "-d", pak)
     if staged is not build:

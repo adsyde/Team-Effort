@@ -1,7 +1,7 @@
 # Регламент работы Claude Code в репозитории
 
 ## 1. Проект
-Мод BG3 «Party Voices» (Patch 8 Hotfix 9, нужен Script Extender): проверки навыков в беседах —
+Мод BG3 «Team Effort» («Общими силами»; Patch 8 Hotfix 9, нужен Script Extender): проверки навыков в беседах и в мире —
 по лучшему в отряде; уникальные реплики спутников в беседах героя. План — `docs/ROADMAP.md`,
 что выяснено — `docs/RESEARCH.md`.
 
@@ -18,11 +18,11 @@
 - В git не добавлять ничего извлечённого из игры.
 
 ## 4. Сборка и установка
-- `python scripts/build_pak.py` — генерирует статусы и собирает `dist/PartyVoices.pak`.
+- `python scripts/build_pak.py` — генерирует статусы и собирает `dist/TeamEffort.pak`.
 - `python scripts/install.py` — только при закрытых BG3 и BG3 Mod Manager (Redux); порядок пишется
   в `modsettings.lsx` и в файлы менеджера. Вместе с Best in Party Skills и Use highest modifier
   не включать (бонусы сложатся), `--remove-conflicts` их выключает.
-- Локализация: `Mods/_MOD_/Localization/<Язык>/PartyVoices_*.xml`, без `<!-- -->` (игра падает).
+- Локализация: `Mods/_MOD_/Localization/<Язык>/TeamEffort_*.xml`, без `<!-- -->` (игра падает).
 - UUID мода в `config/tools.json` не менять никогда.
 - Игру запускать через `bg3_dx11.exe`.
 

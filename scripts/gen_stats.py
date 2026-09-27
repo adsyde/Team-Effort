@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Генерирует статусы помощи отряда в проверках и их тексты.
 
-  mod/Public/_MOD_/Stats/Generated/Data/PV_SkillAssist.txt
-  mod/Mods/_MOD_/Localization/English/PartyVoices_en.xml
-  mod/Mods/_MOD_/Localization/Russian/PartyVoices_ru.xml
+  mod/Public/_MOD_/Stats/Generated/Data/TE_SkillAssist.txt
+  mod/Mods/_MOD_/Localization/English/TeamEffort_en.xml
+  mod/Mods/_MOD_/Localization/Russian/TeamEffort_ru.xml
 
-На каждый навык — MAX_BONUS статусов PV_SKILLASSIST_<Навык>_<N> с Boosts Skill(<Навык>, N) и общим
+На каждый навык — MAX_BONUS статусов TE_SKILLASSIST_<Навык>_<N> с Boosts Skill(<Навык>, N) и общим
 StackId: одновременно висит только один статус навыка. Список навыков и MAX_BONUS должны совпадать
 с Lua/Server/SkillAssist.lua. Термины RU сверены по loca игры: «Отряд», «Проверка навыка».
 
@@ -37,7 +37,7 @@ TEXTS = {
 
 def stats():
     out = [
-        'new entry "PV_SKILLASSIST_BASE"',
+        'new entry "TE_SKILLASSIST_BASE"',
         'type "StatusData"',
         'data "StatusType" "BOOST"',
         f'data "DisplayName" "{NAME};1"',
@@ -49,11 +49,11 @@ def stats():
     for skill in SKILLS:
         for n in range(1, MAX_BONUS + 1):
             out += [
-                f'new entry "PV_SKILLASSIST_{skill}_{n}"',
+                f'new entry "TE_SKILLASSIST_{skill}_{n}"',
                 'type "StatusData"',
                 'data "StatusType" "BOOST"',
-                'using "PV_SKILLASSIST_BASE"',
-                f'data "StackId" "PV_SKILLASSIST_{skill}"',
+                'using "TE_SKILLASSIST_BASE"',
+                f'data "StackId" "TE_SKILLASSIST_{skill}"',
                 f'data "Boosts" "Skill({skill}, {n})"',
                 "",
             ]
@@ -73,9 +73,9 @@ def write(rel, text):
 
 
 def main():
-    write("mod/Public/_MOD_/Stats/Generated/Data/PV_SkillAssist.txt", stats())
+    write("mod/Public/_MOD_/Stats/Generated/Data/TE_SkillAssist.txt", stats())
     for lang, texts in TEXTS.items():
-        write(f"mod/Mods/_MOD_/Localization/{lang}/PartyVoices_{lang[:2].lower()}.xml", loca(texts))
+        write(f"mod/Mods/_MOD_/Localization/{lang}/TeamEffort_{lang[:2].lower()}.xml", loca(texts))
 
 
 if __name__ == "__main__":

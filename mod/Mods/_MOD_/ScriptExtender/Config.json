@@ -1,5 +1,5 @@
 {
     "RequiredVersion": 4,
-    "ModTable": "PartyVoices",
+    "ModTable": "TeamEffort",
     "FeatureFlags": ["Lua"]
 }
