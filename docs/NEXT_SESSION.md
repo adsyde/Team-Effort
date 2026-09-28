@@ -9,7 +9,7 @@
 PR #1–#11 слиты). Правленые диалоги собирает общая библиотека **DialogKit** (github.com/adsyde/DialogKit,
 локально `../DialogKit`). Пак `dist/TeamEffort.pak` собран и лежит в папке модов, в порядке загрузки
 профиля Public. **В игре не проверено ничего.** Автор проверит в новой игре, когда будет готов
-Alfira: Second Verse; точки проверки по ходу акта 1 — `docs/TESTING.md`.
+Alfira: Second Verse; короткий порядок — `docs/TEST_ORDER.md`, подробности точек — `docs/TESTING.md`.
 
 | Этап | Что | Состояние |
 |---|---|---|
