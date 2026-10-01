@@ -117,7 +117,7 @@ Alfira: Second Verse; короткий порядок — `docs/TEST_ORDER.md`, 
 Правленые диалоги собирает общая с SuccubusPlus библиотека DialogKit (github.com/adsyde/DialogKit,
 локально ..\DialogKit). В игре пока ничего не проверено.
 
-Сначала прочитай: CLAUDE.md, docs/NEXT_SESSION.md, docs/ROADMAP.md, docs/RESEARCH.md,
+Сначала прочитай: AGENTS.md, docs/NEXT_SESSION.md, docs/ROADMAP.md, docs/RESEARCH.md,
 docs/TESTING.md и ..\DialogKit\README.md.
 
 Если я пришлю итоги проверки в игре (эксперимент DialogKit, точки docs/TESTING.md, журнал !te_debug,
